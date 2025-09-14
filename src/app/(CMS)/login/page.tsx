@@ -1,7 +1,7 @@
 import { auth, signIn } from "@/utils/auth";
 import { redirect } from "next/navigation";
 
-import LogInButton from "./_components/LogInButton";
+import LogInButton from "./_components/LoginButton/LogInButton";
 
 import "./login.scss";
 

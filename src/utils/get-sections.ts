@@ -9,7 +9,7 @@ export const getSections = async () => {
     
       try {
             if (!res.ok) {
-                  throw new Error("Connection is not OK")
+                  throw new Error("Нет соединения с сервером")
             } else {
                   const sections = await res.json() as Section[]
                   return sections

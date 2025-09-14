@@ -5,9 +5,19 @@ export const dynamic = 'force-dynamic'
 
 export async function GET(_req : NextRequest) {
 
-    const section = await prisma.section.findMany()
+    try {
 
-    return NextResponse.json(section)
+        const section = await prisma.section.findMany()
+
+        if (!section) return NextResponse.json({ error: 'Ошибка загрузки данных' }, { status: 404 })
+
+        return NextResponse.json(section)
+
+    } catch (e: any) {
+        console.error('Ошибка запроса:', e.message)
+    } finally {
+        await prisma.$disconnect()
+    }
 }
     
     

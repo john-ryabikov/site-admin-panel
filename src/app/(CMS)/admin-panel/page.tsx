@@ -8,7 +8,7 @@ export default async function AdminSection() {
 
     return (
       <section className="cms-page__section">
-        {sections ? (<SectionEdit section={sections[0]}/>) : (<p>Данные загружаются...</p>)}
+        {sections ? (<SectionEdit section={sections[0]}/>) : (<p>Данные не загружены, обновите страницу</p>)}
       </section>
     )
 }

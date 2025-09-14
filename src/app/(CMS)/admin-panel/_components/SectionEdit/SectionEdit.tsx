@@ -2,7 +2,7 @@
 
 import { Section } from "@prisma/client"
 import { useState } from "react"
-import { publicChanges } from "../../utils/public-changes" 
+import { publicChangedTitle } from "../../utils/public-changes" 
 import { useRouter } from "next/navigation"
 
 interface Props {
@@ -16,10 +16,10 @@ export default function SectionEdit({ section } : Props) {
 
     const router = useRouter()
 
-    const bindPublicChange = publicChanges.bind(null, section.id)
+    const bindPublicChangedTitle = publicChangedTitle.bind(null, section.id)
 
     const publicTitle = (data: FormData) => {
-      bindPublicChange(data)
+      bindPublicChangedTitle(data)
       setEdit(prev => !prev)
       router.refresh()
     }

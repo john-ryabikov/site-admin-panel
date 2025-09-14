@@ -2,7 +2,7 @@
 
 import { useFormStatus } from "react-dom"
 
-import Loader from "@/app/admin-panel/_components/Loader/Loader"
+import Loader from "@/app/(CMS)/admin-panel/_components/Loader/Loader"
 
 export default function LogInButton() {
 

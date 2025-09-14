@@ -12,7 +12,7 @@ interface Props {
 export default function SectionOne({ styledClass, section } : Props) {
   return (
     <section className={styledClass}>
-        <h1 className={`${styledClass}__h1`}>{section.title}</h1>
+        <h1 className={`${styledClass}__h1`}>{section ? section.title : "Данные не загрузились :("}</h1>
         <Link href="/admin-panel">Админка</Link>
     </section>
   )
