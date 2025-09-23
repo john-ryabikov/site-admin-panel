@@ -1,16 +1,17 @@
-FROM node:23-alpine AS builder
+FROM node:23-alpine AS base
+RUN npm install -g pnpm
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
 COPY . .
-RUN npm run build
+RUN pnpm install
+
+FROM base AS runner
+RUN pnpm run build
 
 FROM node:23-alpine AS runner
+RUN npm install -g pnpm
 WORKDIR /app
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.ts ./
+COPY --from=builder /app/.next/static .next/static
 EXPOSE 3000
-RUN npm install --production
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
