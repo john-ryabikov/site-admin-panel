@@ -17,7 +17,7 @@ export default async function AdminPanelLoginPage() {
             alert("Введите данные!")
             return
         }
-        await signIn("credentials", {data, callbackUrl: '/admin-panel'})
+        await signIn("credentials", data)
     }
     
     return (
