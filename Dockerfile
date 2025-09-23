@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 RUN pnpm install
 
-FROM base AS runner
+FROM base AS builder
 RUN pnpm run build
 
 FROM node:23-alpine AS runner
