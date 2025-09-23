@@ -1,14 +1,12 @@
 FROM node:23-alpine AS base
-RUN npm install -g pnpm
 WORKDIR /app
 COPY . .
-RUN pnpm install
+RUN npm install
 
 FROM base AS builder
-RUN pnpm run build
+RUN npm run build
 
 FROM node:23-alpine AS runner
-RUN npm install -g pnpm
 WORKDIR /app
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/public ./public
